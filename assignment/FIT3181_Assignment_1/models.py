@@ -142,6 +142,7 @@ class DefaultModel():
         self.model.add(layers.Flatten())
         self.model.add(layers.Dense(self.num_classes, activation='softmax'))
         self.model.compile(optimizer=self.optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+        print("built CNN!")
     
     def summary(self):
         print(self.model.summary())
@@ -187,8 +188,8 @@ class DefaultModel():
         for i in range(tile_shape[0]):
             for j in range(tile_shape[1]):
                 ax[i, j].imshow((X[idx[i * tile_shape[1] + j]] + 1.0)/2)
-                ax[i, j].set_title('{} (p: {})'.format(classes[y[idx[i * tile_shape[1] + j]]],
-                                                        classes[y_pred[idx[i * tile_shape[1] + j]]]))
+                # ax[i, j].set_title('{} (p: {})'.format(classes[y[idx[i * tile_shape[1] + j]]],
+                #                                         classes[y_pred[idx[i * tile_shape[1] + j]]]))
                 ax[i, j].grid(False)
                 ax[i, j].axis('off')
         plt.show()
